@@ -119,18 +119,20 @@ w,v=eig(eigen)
 print('E-value:', w)
 print('E-vector \n', np.asarray(v))
 
-# Sort them to corresponding eigenvectors
-print("*********************")
-print("Step 4. picking first column of e1 eigenvectors: ")
-eigen_mat = [v[0][0], v[1][0]]
-print( eigen_mat )
+# # Sort them to corresponding eigenvectors
+# print("*********************")
+# print("Step 4. picking first column of e1 eigenvectors: ")
+# eigen_mat = [v[0][0], v[1][0]]
+# print( eigen_mat )
 
 # pick k eigenvaules and form a matrix of eigenvectors
 print("*********************")
-print("Step 5. k eigen with k = 1 and now mutiply")
+print("Step 4. k eigen with k = 1 and now mutiply")
 
 # Transform the original matrix
-transform = np.dot(data, eigen_mat )
+# transform = np.dot(data, eigen_mat )
+# print(transform)
+transform = np.dot(data, v )
 print(transform)
 
 print("*********************")
@@ -144,13 +146,17 @@ print(pca.explained_variance_ratio_)
 X_new = pca.inverse_transform(princ_comp)
 X = data_std
 plt.title("PCA Graph")
-plt.scatter(data_set_X, data_set_Y, alpha=0.2)			# data points BLUE
-plt.scatter(v[0][0],  v[1][0], alpha=0.6)				# eigen vector value ORANGE
+v_x = [v[0][0], v[0][1]]
+v_y = [v[0][1], v[1][1]]
+
+plt.scatter(v_x,  v_y, alpha=0.6)				# eigen vector value ORANGE
+plt.plot(v_x, v_y, alpha=0.8)
 # plt.plot(v[0][0],  0, alpha=0.6)
 plt.scatter(princ_comp, princ_comp, alpha=0.8)
 plt.plot(princ_comp, princ_comp, alpha=0.8)			# PC1 x PC1 GREEN
 # plt.scatter(w[0], w[1], alpha=0.8)						# eigen vaules
 # plt.plot(princ_comp, princ_comp, alpha=0.8)
+plt.scatter(data_set_X, data_set_Y, alpha=0.2)			# data points BLUE
 plt.axis('equal');
 plt.xlabel("Principal Component 1 ",fontsize=14)
 plt.ylabel("Principal Component 1 ",fontsize=14)
@@ -175,6 +181,4 @@ plt.show()
 # plt.xlabel('Principal Component')
 # plt.ylabel('Variance Explained')
 # plt.show()
-
-
 
