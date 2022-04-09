@@ -26,7 +26,7 @@ def standardize (data):
 		clean_data.append( (i - data_mean)/data_stdev )
 	return clean_data
 
-def standardize_no_stdev (data):
+def standardize_nostdev (data):
 	n = len(data)
 	# data_stdev = stats.stdev(data)
 	data_mean = stats.mean(data)
@@ -133,6 +133,11 @@ print("Step 5. k eigen with k = 1 and now mutiply")
 transform = np.dot(data, eigen_mat )
 print(transform)
 
+print("*********************")
+print("Result")
+print("The PCA explained variance ratio is: ")
+print(pca.explained_variance_ratio_)
+
 
 ###### GRAPH /////// TODO
 
@@ -140,14 +145,36 @@ X_new = pca.inverse_transform(princ_comp)
 X = data_std
 plt.title("PCA Graph")
 plt.scatter(data_set_X, data_set_Y, alpha=0.2)			# data points BLUE
-plt.scatter(v[0][0],  v[1][0], alpha=0.6)				# eigen vector value GREEN
+plt.scatter(v[0][0],  v[1][0], alpha=0.6)				# eigen vector value ORANGE
 # plt.plot(v[0][0],  0, alpha=0.6)
-plt.scatter(princ_comp, princ_comp, alpha=0.8)			# PC1 x PC1 ORAMGE
-plt.scatter(eigen[0], eigen[1], alpha=0.8)	
+plt.scatter(princ_comp, princ_comp, alpha=0.8)
+plt.plot(princ_comp, princ_comp, alpha=0.8)			# PC1 x PC1 GREEN
+# plt.scatter(w[0], w[1], alpha=0.8)						# eigen vaules
 # plt.plot(princ_comp, princ_comp, alpha=0.8)
 plt.axis('equal');
+plt.xlabel("Principal Component 1 ",fontsize=14)
+plt.ylabel("Principal Component 1 ",fontsize=14)
 plt.show()
 
+
+# plt.scatter(data_set_X, data_set_Y, alpha=0.2)	
+# pca.fit(data) 
+
+# X_pca=pca.transform(data) 
+
+# plt.scatter(data_set_X, data_set_Y, alpha=0.2)
+# plt.scatter(X_pca, X_pca, alpha=0.2)
+# plt.scatter(w[0], w[0], alpha=0.8)
+# plt.scatter(w[1], w[1], alpha=0.8)
+# plt.xlabel("Principal Component 1 ",fontsize=14)
+# plt.show()
+
+# PC_values = np.arange(pca.n_components) + 1
+# plt.plot(PC_values, pca.explained_variance_ratio_, 'o-', linewidth=2, color='blue')
+# plt.title('Scree Plot')
+# plt.xlabel('Principal Component')
+# plt.ylabel('Variance Explained')
+# plt.show()
 
 
 
