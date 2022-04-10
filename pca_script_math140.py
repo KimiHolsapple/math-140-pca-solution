@@ -149,14 +149,14 @@ plt.title("PCA Graph")
 v_x = [v[0][0], v[0][1]]
 v_y = [v[0][1], v[1][1]]
 
-plt.scatter(v_x,  v_y, alpha=0.6)				# eigen vector value ORANGE
+plt.scatter(v_x,  v_y, alpha=0.6)				 
 plt.plot(v_x, v_y, alpha=0.8)
 # plt.plot(v[0][0],  0, alpha=0.6)
 plt.scatter(princ_comp, princ_comp, alpha=0.8)
-plt.plot(princ_comp, princ_comp, alpha=0.8)			# PC1 x PC1 GREEN
+plt.plot(princ_comp, princ_comp, alpha=0.8)		 
 # plt.scatter(w[0], w[1], alpha=0.8)						# eigen vaules
 # plt.plot(princ_comp, princ_comp, alpha=0.8)
-plt.scatter(data_set_X, data_set_Y, alpha=0.2)			# data points BLUE
+plt.scatter(data_set_X, data_set_Y, alpha=0.2)			
 plt.axis('equal');
 plt.xlabel("Principal Component 1 ",fontsize=14)
 plt.ylabel("Principal Component 1 ",fontsize=14)
