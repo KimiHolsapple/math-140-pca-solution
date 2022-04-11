@@ -146,20 +146,33 @@ print(pca.explained_variance_ratio_)
 X_new = pca.inverse_transform(princ_comp)
 X = data_std
 plt.title("PCA Graph")
+
 v_x = [v[0][0], v[0][1]]
-v_y = [v[0][1], v[1][1]]
+v_y = [v[1][0], v[1][1]]
+print(v_x)
+print(v_y)
+
+t_x = [transform[0][0], transform[1][0], transform[2][0], transform[3][0] ] 
+t_y = [transform[0][1] ,transform[1][1] , transform[2][1] , transform[3][1]]
 
 plt.scatter(v_x,  v_y, alpha=0.6)				 
-plt.plot(v_x, v_y, alpha=0.8)
-# plt.plot(v[0][0],  0, alpha=0.6)
-plt.scatter(princ_comp, princ_comp, alpha=0.8)
-plt.plot(princ_comp, princ_comp, alpha=0.8)		 
+v_x = [v[0][0], 0]
+v_y = [v[1][0], 0]
+plt.plot(v_x,  v_y, alpha=0.6)
+
+v_x = [0,  v[0][1]]
+v_y = [0, v[1][1]]	
+plt.plot(v_x,  v_y, alpha=0.6)
+
+
+# plt.plot(transform, transform, alpha=0.8)		 
 # plt.scatter(w[0], w[1], alpha=0.8)						# eigen vaules
 # plt.plot(princ_comp, princ_comp, alpha=0.8)
-plt.scatter(data_set_X, data_set_Y, alpha=0.2)			
+plt.scatter(data_set_X, data_set_Y, alpha=0.2)	
+plt.scatter(t_x, t_y, alpha=0.8)		
 plt.axis('equal');
-plt.xlabel("Principal Component 1 ",fontsize=14)
-plt.ylabel("Principal Component 1 ",fontsize=14)
+# plt.xlabel("Principal Component 1 ",fontsize=14)
+# plt.ylabel("Principal Component 1 ",fontsize=14)
 plt.show()
 
 
@@ -181,4 +194,3 @@ plt.show()
 # plt.xlabel('Principal Component')
 # plt.ylabel('Variance Explained')
 # plt.show()
-
